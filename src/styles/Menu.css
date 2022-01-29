@@ -1,0 +1,50 @@
+.menu {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100vh;
+  transition: 0.2s cubic-bezier(0, 0.75, 0, 0.75);
+  width: 13%;
+  color: var(--primary);
+  background: var(--background);
+  padding: var(--padding);
+}
+
+.menu-open {
+  width: 30%;
+}
+
+.menu ul {
+  display: none;
+  list-style: none;
+  padding: 0;
+}
+
+.list-open {
+  display: block !important;
+}
+
+.menu ul a {
+  transition: 0.2s ease-in;
+  text-decoration: none;
+}
+
+.menu ul a li {
+  margin-bottom: 6px;
+  color: var(--primary);
+  transition: 0.2s ease-in;
+}
+
+.menu ul a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.menu ul a li:hover {
+  color: var(--accent);
+}
+
+.menu-button {
+  cursor: pointer;
+}
