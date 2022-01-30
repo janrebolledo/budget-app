@@ -6,6 +6,15 @@
   width: 25%;
 }
 
+.log-filter {
+  display: flex;
+  align-items: center;
+}
+
+.log-filter * {
+  margin-right: 6px;
+}
+
 .log-item {
   display: flex;
   align-items: center;
@@ -13,6 +22,7 @@
   font-size: 12px;
   padding: 12px 0;
   border-bottom: 1px solid var(--foreground);
+  padding: calc(var(--padding) / 2) 0;
 }
 
 .log-item p {
@@ -50,6 +60,10 @@
   padding: 6px;
   border-radius: 6px;
   border: 0.5px solid var(--foreground);
+}
+
+.new-entry-form input::placeholder {
+  color: var(--foreground);
 }
 
 .new-entry-form button {

@@ -1,12 +1,10 @@
 import "../styles/log.css";
 import CurrencyInput from "react-currency-input-field";
+import { useEffect } from "react";
 
 export default function Log() {
   function newEntry() {
-    var date = document
-      .getElementById("date")
-      .valueAsDate.toUTCString()
-      .replace(" 00:00:00 GMT", "");
+    var date = document.getElementById("date").value.replace(/-/g, "/");
     var name = document.getElementById("name").value;
     var amount = document.getElementById("amount").value;
     // Get log in localStorage
@@ -24,6 +22,7 @@ export default function Log() {
       let updatedLog = log.concat(newEntry);
       // Set updatedLog as localStorage
       localStorage.setItem("log", JSON.stringify(updatedLog));
+      refreshTotal();
     }
   }
   function deleteItem(event) {
@@ -32,14 +31,46 @@ export default function Log() {
     console.log(removeId);
 
     // Get log from localStorage
-    // let log = JSON.parse(localStorage.getItem("log") || "[]");
+    let log = JSON.parse(localStorage.getItem("log") || "[]");
 
     // To-do: remove item from localstorage
+    localStorage.removeItem("log");
+
+    console.log(log);
+  }
+
+  function refreshTotal() {
+    const totalHTML = document.getElementById("total");
+    let log = JSON.parse(localStorage.getItem("log") || "[]");
+
+    // Get amounts in an array as integers
+    let result = log.map(({ amount }) =>
+      parseInt(amount.replace("$", "").replace(",", ""))
+    );
+
+    // Add amounts together
+    let total = 0;
+
+    for (let i = 0; i < result.length; i++) {
+      total += result[i];
+    }
+
+    // If total > 0 set it as text for html, else set it to 0
+    if (total > 0) {
+      totalHTML.innerHTML = total;
+    } else {
+      totalHTML.innerHTML = "0.00";
+    }
   }
 
   // TO-DO
   // Refresh map on new entry
   let log = JSON.parse(localStorage.getItem("log") || "[]");
+
+  // refreshes total on load
+  useEffect(() => {
+    refreshTotal();
+  }, []);
   return (
     <main>
       <h2>Expenses Log</h2>
@@ -48,7 +79,17 @@ export default function Log() {
           <h4>Date</h4>
           <h4>Name</h4>
           <h4>Amount</h4>
+          <div className="log-filter-container">
+            <h5>Filter</h5>
+            <div className="log-filter">
+              <label>From</label>
+              <input type="date" placeholder="1/1/2022" />
+              <label>To</label>
+              <input type="date" placeholder="12/30/2022" />
+            </div>
+          </div>
         </div>
+        <button onClick={refreshTotal}>Refresh total</button>
         <div className="log" id="log">
           {log.map((item) => (
             <div className="log-item" key={item.id} id={item.id}>
@@ -66,7 +107,8 @@ export default function Log() {
           ))}
         </div>
         <p className="log-total">
-          Total: <b>$10.00</b>
+          Total: <b>$</b>
+          <b id="total"></b>
         </p>
       </div>
       <div className="new-entry-form">
