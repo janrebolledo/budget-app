@@ -89,7 +89,6 @@ export default function Log() {
             </div>
           </div>
         </div>
-        <button onClick={refreshTotal}>Refresh total</button>
         <div className="log" id="log">
           {log.map((item) => (
             <div className="log-item" key={item.id} id={item.id}>
