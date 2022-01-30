@@ -26,12 +26,14 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  overflow-y: none;
 }
 
 .App {
   color: var(--background);
   width: 90%;
   height: 100vh;
+  overflow-y: auto;
   padding: var(--padding) var(--padding) var(--padding) var(--padding);
 }
 

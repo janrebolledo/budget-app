@@ -24,6 +24,12 @@
   cursor: pointer;
   text-align: end;
   width: 25%;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.log-item:hover .material-icons {
+  opacity: 1;
 }
 
 .log-total {

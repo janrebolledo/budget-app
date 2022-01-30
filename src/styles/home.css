@@ -13,5 +13,6 @@
   background-color: var(--foreground);
   border-radius: 16px;
   padding: 16px;
+  min-height: 240px;
   box-shadow: var(--dropshadow);
 }

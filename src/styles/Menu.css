@@ -34,6 +34,8 @@
   margin-bottom: 6px;
   color: var(--primary);
   transition: 0.2s ease-in;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .menu ul a:hover {
