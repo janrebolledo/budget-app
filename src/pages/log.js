@@ -1,15 +1,14 @@
 import "../styles/log.css";
+import CurrencyInput from "react-currency-input-field";
 
 export default function Log() {
   function newEntry() {
-    var date = document.getElementById("date").value.replace(/-/g, "/");
+    var date = document
+      .getElementById("date")
+      .valueAsDate.toUTCString()
+      .replace(" 00:00:00 GMT", "");
     var name = document.getElementById("name").value;
-    var amount = document
-      .getElementById("amount")
-      .value.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      });
+    var amount = document.getElementById("amount").value;
     // Get log in localStorage
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     // Set newEntry as a blank array
@@ -43,7 +42,7 @@ export default function Log() {
   let log = JSON.parse(localStorage.getItem("log") || "[]");
   return (
     <main>
-      <h2>Log</h2>
+      <h2>Expenses Log</h2>
       <div className="log-container">
         <div className="log-header">
           <h4>Date</h4>
@@ -55,7 +54,7 @@ export default function Log() {
             <div className="log-item" key={item.id} id={item.id}>
               <p>{item.date}</p>
               <p>{item.name}</p>
-              <p>${item.amount}</p>
+              <p>{item.amount}</p>
               <span
                 className="material-icons"
                 id={item.id}
@@ -73,7 +72,15 @@ export default function Log() {
       <div className="new-entry-form">
         <input id="date" type="date" required placeholder="1/1/2022" />
         <input id="name" type="text" required placeholder="Expense" />
-        <input id="amount" type="number" required placeholder="$00.00" />
+        {/* <input id="amount" type="number" required placeholder="$00.00" /> */}
+        <CurrencyInput
+          required
+          id="amount"
+          placeholder="$00.00"
+          prefix="$"
+          decimalsLimit={2}
+          intlConfig={{ locale: "en-US", currency: "USD" }}
+        />
         <button type="submit" onClick={newEntry}>
           Add
         </button>
