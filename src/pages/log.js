@@ -22,6 +22,7 @@ export default function Log() {
       let updatedLog = log.concat(newEntry);
       // Set updatedLog as localStorage
       localStorage.setItem("log", JSON.stringify(updatedLog));
+      logItems();
       refreshTotal();
     }
   }
@@ -34,7 +35,6 @@ export default function Log() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
 
     // To-do: remove item from localstorage
-    localStorage.removeItem("log");
 
     console.log(log);
   }
@@ -63,12 +63,35 @@ export default function Log() {
     }
   }
 
-  // TO-DO
-  // Refresh map on new entry
-  let log = JSON.parse(localStorage.getItem("log") || "[]");
+  function logItems() {
+    let log = JSON.parse(localStorage.getItem("log") || "[]");
+    const logContainer = document.getElementById("log");
 
-  // refreshes total on load
+    // Clears container
+    logContainer.innerHTML = "";
+
+    // Prints an item for every object
+    logContainer.innerHTML = log
+      .map(
+        (item) =>
+          `<div class="log-item" key=${item.id} id=${item.id}>
+        <p>${item.date}</p>
+        <p>${item.name}</p>
+        <p>${item.amount}</p>
+        <span class="material-icons" id=${item.id} onClick=${deleteItem}>
+          close
+        </span>
+      </div>
+      `
+      )
+      .join("");
+  }
+
+  // let log = JSON.parse(localStorage.getItem("log") || "[]");
+
+  // Prints items + calculates total on load
   useEffect(() => {
+    logItems();
     refreshTotal();
   }, []);
   return (
@@ -89,26 +112,14 @@ export default function Log() {
             </div>
           </div>
         </div>
-        <div className="log" id="log">
-          {log.map((item) => (
-            <div className="log-item" key={item.id} id={item.id}>
-              <p>{item.date}</p>
-              <p>{item.name}</p>
-              <p>{item.amount}</p>
-              <span
-                className="material-icons"
-                id={item.id}
-                onClick={deleteItem}
-              >
-                close
-              </span>
-            </div>
-          ))}
+        <div className="log" id="log"></div>
+        <div className="log-footer">
+          <p>Add new expense</p>
+          <p>
+            Total: <b>$</b>
+            <b id="total"></b>
+          </p>
         </div>
-        <p className="log-total">
-          Total: <b>$</b>
-          <b id="total"></b>
-        </p>
       </div>
       <div className="new-entry-form">
         <input id="date" type="date" required placeholder="1/1/2022" />

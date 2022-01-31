@@ -42,9 +42,10 @@
   opacity: 1;
 }
 
-.log-total {
+.log-footer {
   width: 100%;
-  text-align: end;
+  display: flex;
+  justify-content: space-between;
 }
 
 .new-entry-form {
