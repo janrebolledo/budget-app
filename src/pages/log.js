@@ -78,7 +78,7 @@ export default function Log() {
         <p>${item.date}</p>
         <p>${item.name}</p>
         <p>${item.amount}</p>
-        <span class="material-icons" id=${item.id} onClick=${deleteItem}>
+        <span class="material-icons" id=${item.id} class="close-button">
           close
         </span>
       </div>
