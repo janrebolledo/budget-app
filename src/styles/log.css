@@ -74,6 +74,7 @@
   border: 0.5px solid var(--foreground);
   backdrop-filter: blur(8px);
   background: var(--gradient);
+  color: var(--primary);
 }
 
 .new-entry-form input::placeholder {

@@ -26,18 +26,6 @@ export default function Log() {
       refreshTotal();
     }
   }
-  function deleteItem(event) {
-    // Get id of item by getting id of button
-    const removeId = event.target.id;
-    console.log(removeId);
-
-    // Get log from localStorage
-    let log = JSON.parse(localStorage.getItem("log") || "[]");
-
-    // To-do: remove item from localstorage
-
-    console.log(log);
-  }
 
   function refreshTotal() {
     const totalHTML = document.getElementById("total");
@@ -78,9 +66,6 @@ export default function Log() {
         <p>${item.date}</p>
         <p>${item.name}</p>
         <p>${item.amount}</p>
-        <span class="material-icons" id=${item.id} class="close-button">
-          close
-        </span>
       </div>
       `
       )
