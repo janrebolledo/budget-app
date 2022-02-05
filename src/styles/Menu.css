@@ -7,7 +7,9 @@
   transition: 0.2s cubic-bezier(0, 0.75, 0, 0.75);
   width: 13%;
   color: var(--primary);
-  background: var(--background);
+  background: var(--gradient);
+  backdrop-filter: blur(8px);
+  border: 1px solid #ffffff30;
   padding: var(--padding);
 }
 

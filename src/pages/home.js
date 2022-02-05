@@ -3,7 +3,7 @@ import "../styles/home.css";
 export default function Home() {
   return (
     <main>
-      <h2>Dashboard</h2>
+      <h2 className="dashboard-heading">Dashboard</h2>
       <section className="dashboard-section">
         <div className="card">
           <h4>Weekly Spending</h4>

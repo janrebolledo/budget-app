@@ -96,21 +96,12 @@ export default function Log() {
   }, []);
   return (
     <main>
-      <h2>Expenses Log</h2>
+      <h2 className="log-heading">Expenses Log</h2>
       <div className="log-container">
         <div className="log-header">
           <h4>Date</h4>
           <h4>Name</h4>
           <h4>Amount</h4>
-          <div className="log-filter-container">
-            <h5>Filter</h5>
-            <div className="log-filter">
-              <label>From</label>
-              <input type="date" placeholder="1/1/2022" />
-              <label>To</label>
-              <input type="date" placeholder="12/30/2022" />
-            </div>
-          </div>
         </div>
         <div className="log" id="log"></div>
         <div className="log-footer">
@@ -124,7 +115,6 @@ export default function Log() {
       <div className="new-entry-form">
         <input id="date" type="date" required placeholder="1/1/2022" />
         <input id="name" type="text" required placeholder="Expense" />
-        {/* <input id="amount" type="number" required placeholder="$00.00" /> */}
         <CurrencyInput
           required
           id="amount"

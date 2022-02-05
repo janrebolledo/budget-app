@@ -5,14 +5,21 @@
   row-gap: 8px;
 }
 
+.dashboard-heading {
+  color: var(--primary);
+}
+
 .card:nth-child(3n) {
   grid-column: span 2;
 }
 
 .card {
-  background-color: var(--foreground);
+  background: var(--gradient);
+  color: var(--primary);
   border-radius: 16px;
   padding: 16px;
-  min-height: 240px;
+  min-height: 36vh;
   box-shadow: var(--dropshadow);
+  backdrop-filter: blur(8px);
+  border: 1px solid #ffffff30;
 }

@@ -1,5 +1,10 @@
+.log-heading {
+  color: var(--primary);
+}
+
 .log-header {
   display: flex;
+  color: var(--primary);
 }
 
 .log-header h4 {
@@ -21,8 +26,13 @@
   flex-direction: row;
   font-size: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid var(--foreground);
-  padding: calc(var(--padding) / 2) 0;
+  padding: calc(var(--padding) / 2);
+  border-radius: 16px;
+  background: var(--gradient);
+  backdrop-filter: blur(8px);
+  border: 1px solid #ffffff30;
+  margin-bottom: 6px;
+  color: var(--primary);
 }
 
 .log-item p {
@@ -46,6 +56,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  color: var(--primary);
 }
 
 .new-entry-form {
@@ -61,6 +72,8 @@
   padding: 6px;
   border-radius: 6px;
   border: 0.5px solid var(--foreground);
+  backdrop-filter: blur(8px);
+  background: var(--gradient);
 }
 
 .new-entry-form input::placeholder {

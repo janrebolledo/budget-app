@@ -17,6 +17,11 @@ body {
   --background: rgb(0, 0, 0);
   --foreground: rgb(235, 235, 235);
   --accent: rgb(0, 140, 255);
+  --gradient: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(112, 112, 112, 0.6) 100%
+  );
   --padding: 5%;
   --dropshadow: 2px 2px 8px rgba(33, 33, 33, 0.03);
 }
@@ -27,6 +32,7 @@ body {
   justify-content: center;
   flex-direction: row;
   overflow-y: none;
+  background: url("../../public/Background.jpg");
 }
 
 .App {
