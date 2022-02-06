@@ -39,6 +39,10 @@
   width: 25%;
 }
 
+.log-item h3 {
+  margin-bottom: 0;
+}
+
 .log-item .material-icons {
   font-size: 18px;
   cursor: pointer;

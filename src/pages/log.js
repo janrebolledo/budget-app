@@ -51,6 +51,10 @@ export default function Log() {
     }
   }
 
+  function deleteItem(id) {
+    console.log("hi" + id);
+  }
+
   function logItems() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     const logContainer = document.getElementById("log");
@@ -66,10 +70,19 @@ export default function Log() {
         <p>${item.date}</p>
         <p>${item.name}</p>
         <p>${item.amount}</p>
+        <span class="material-icons" id=${item.id} onClick={deleteItem(this.id)}>delete</span>
       </div>
       `
       )
       .join("");
+
+    // If log is empty, give a message to add first log item
+
+    if (logContainer.innerHTML === "") {
+      logContainer.innerHTML = `
+      <div class="log-item"><h3>No log items found. Add one below to get started.</h3></div>
+      `;
+    }
   }
 
   // let log = JSON.parse(localStorage.getItem("log") || "[]");
