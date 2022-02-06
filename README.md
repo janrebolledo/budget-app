@@ -1,4 +1,4 @@
-# :warning: No longer maintained.
+# :warning: No longer actively maintained.
 
 Budget Tracker app built with `React.js`.
 
