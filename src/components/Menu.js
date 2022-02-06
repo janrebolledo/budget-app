@@ -1,4 +1,5 @@
 import "../styles/Menu.css";
+import Settings from "./SettingsMenu";
 
 export default function Menu() {
   function openMenu() {
@@ -16,23 +17,39 @@ export default function Menu() {
       navButton.innerHTML = "close";
     }
   }
+  function openSettings() {
+    const settingsModal = document.querySelector("#settings-modal");
+    if (settingsModal.classList.contains("settings-modal-open")) {
+      settingsModal.classList.remove("settings-modal-open");
+    } else {
+      settingsModal.classList.add("settings-modal-open");
+    }
+  }
   return (
-    <nav id="menu" className="menu">
-      <span
-        onClick={openMenu}
-        id="menu-btn"
-        className="material-icons menu-button"
-      >
-        menu
-      </span>
-      <ul id="menu-list">
-        <a href="/">
-          <li>Dashboard</li>
-        </a>
-        <a href="/log">
-          <li>Log</li>
-        </a>
-      </ul>
-    </nav>
+    <>
+      <nav id="menu" className="menu">
+        <div>
+          <span
+            onClick={openMenu}
+            id="menu-btn"
+            className="material-icons menu-button"
+          >
+            menu
+          </span>
+          <ul id="menu-list">
+            <a href="/">
+              <li>Dashboard</li>
+            </a>
+            <a href="/log">
+              <li>Log</li>
+            </a>
+          </ul>
+        </div>
+        <span className="material-icons settings-button" onClick={openSettings}>
+          settings
+        </span>
+      </nav>
+      <Settings />
+    </>
   );
 }

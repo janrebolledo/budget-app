@@ -1,7 +1,7 @@
 .menu {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
   height: 100vh;
   transition: 0.2s cubic-bezier(0, 0.75, 0, 0.75);
@@ -50,5 +50,9 @@
 }
 
 .menu-button {
+  cursor: pointer;
+}
+
+.settings-button {
   cursor: pointer;
 }

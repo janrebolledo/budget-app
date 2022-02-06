@@ -51,9 +51,9 @@ export default function Log() {
     }
   }
 
-  function deleteItem(id) {
-    console.log("hi" + id);
-  }
+  // function deleteItem(id) {
+  //   console.log("hi" + id);
+  // }
 
   function logItems() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
