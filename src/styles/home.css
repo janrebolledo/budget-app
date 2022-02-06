@@ -23,3 +23,14 @@
   backdrop-filter: blur(8px);
   border: 1px solid #ffffff30;
 }
+
+.card-total {
+  margin-bottom: 6px;
+}
+
+.card-total ~ small {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
