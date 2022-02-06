@@ -17,8 +17,7 @@
   background: var(--gradient);
   color: var(--primary);
   border-radius: 16px;
-  padding: 16px;
-  min-height: 36vh;
+  padding: 24px;
   box-shadow: var(--dropshadow);
   backdrop-filter: blur(8px);
   border: 1px solid #ffffff30;
