@@ -51,10 +51,6 @@ export default function Log() {
     }
   }
 
-  // function deleteItem(id) {
-  //   console.log("hi" + id);
-  // }
-
   function logItems() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     const logContainer = document.getElementById("log");
@@ -70,11 +66,13 @@ export default function Log() {
         <p>${item.date}</p>
         <p>${item.name}</p>
         <p>${item.amount}</p>
-        <span class="material-icons" id=${item.id} onClick={deleteItem(this.id)}>delete</span>
+        <span class="material-icons delete-button" id=${item.id}>delete</span>
       </div>
       `
       )
       .join("");
+
+    deleteButtons();
 
     // If log is empty, give a message to add first log item
 
@@ -85,12 +83,41 @@ export default function Log() {
     }
   }
 
-  // let log = JSON.parse(localStorage.getItem("log") || "[]");
+  // Creates an event listener for delete buttons to trigger deleteItem when clicked
+  function deleteButtons() {
+    const deleteButton = document.querySelectorAll(".delete-button");
+
+    deleteButton.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        deleteItem(e);
+      });
+    });
+  }
+
+  function deleteItem(e) {
+    const removeId = parseInt(e.target.id);
+
+    let log = JSON.parse(localStorage.getItem("log") || "[]");
+
+    // Filters the list by id
+    var updatedLog = log.filter((item) => {
+      return item.id !== removeId;
+    });
+
+    // Sets the localStorage as the updated log
+    localStorage.setItem("log", JSON.stringify(updatedLog));
+
+    // Refreshes UI
+    logItems();
+    refreshTotal();
+    deleteButtons();
+  }
 
   // Prints items + calculates total on load
   useEffect(() => {
     logItems();
     refreshTotal();
+    deleteButtons();
   }, []);
   return (
     <main>

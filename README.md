@@ -6,6 +6,5 @@ Logs stored in localStorage.
 
 ### To-do:
 
-1. Deleting items in log
-2. Filtering items by date, price, & more
-3. Working dashboard
+1. Filtering items by date, price, & more
+2. Working dashboard
