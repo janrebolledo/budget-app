@@ -75,10 +75,11 @@
   box-shadow: var(--dropshadow);
   padding: 6px;
   border-radius: 6px;
-  border: 0.5px solid var(--foreground);
+  border: 0.5px solid #ffffff30;
   backdrop-filter: blur(8px);
   background: var(--gradient);
   color: var(--primary);
+  font-family: var(--fonts);
 }
 
 .new-entry-form input::placeholder {

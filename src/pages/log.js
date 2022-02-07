@@ -33,7 +33,14 @@ export default function Log() {
 
     // Get amounts in an array as integers
     let result = log.map(({ amount }) =>
-      parseInt(amount.replace("$", "").replace(",", ""))
+      Number(
+        amount
+          .replace("$", "")
+          .replace(",", "")
+          .replace(",", "")
+          .replace(",", "")
+          .replace(",", "")
+      )
     );
 
     // Add amounts together
@@ -43,11 +50,16 @@ export default function Log() {
       total += result[i];
     }
 
+    const formattedTotal = total.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
     // If total > 0 set it as text for html, else set it to 0
     if (total > 0) {
-      totalHTML.innerHTML = total;
+      totalHTML.innerHTML = formattedTotal;
     } else {
-      totalHTML.innerHTML = "0.00";
+      totalHTML.innerHTML = "$0.00";
     }
   }
 
@@ -130,8 +142,7 @@ export default function Log() {
         <div className="log-footer">
           <p>Add new expense</p>
           <p>
-            Total: <b>$</b>
-            <b id="total"></b>
+            Total: <b id="total"></b>
           </p>
         </div>
       </div>
