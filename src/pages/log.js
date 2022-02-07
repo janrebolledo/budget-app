@@ -110,14 +110,12 @@ export default function Log() {
     // Refreshes UI
     logItems();
     refreshTotal();
-    deleteButtons();
   }
 
   // Prints items + calculates total on load
   useEffect(() => {
     logItems();
     refreshTotal();
-    deleteButtons();
   }, []);
   return (
     <main>
