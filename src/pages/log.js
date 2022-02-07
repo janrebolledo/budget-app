@@ -128,6 +128,8 @@ export default function Log() {
   useEffect(() => {
     logItems();
     refreshTotal();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <main>
@@ -146,7 +148,7 @@ export default function Log() {
           </p>
         </div>
       </div>
-      <div className="new-entry-form">
+      <form className="new-entry-form">
         <input id="date" type="date" required placeholder="1/1/2022" />
         <input id="name" type="text" required placeholder="Expense" />
         <CurrencyInput
@@ -160,7 +162,7 @@ export default function Log() {
         <button type="submit" onClick={newEntry}>
           Add
         </button>
-      </div>
+      </form>
     </main>
   );
 }
