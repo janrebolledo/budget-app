@@ -105,3 +105,9 @@
 .chart-unit p {
   font-size: xx-small;
 }
+
+@media screen and (max-width: 980px) {
+  .chart-container {
+    display: none;
+  }
+}

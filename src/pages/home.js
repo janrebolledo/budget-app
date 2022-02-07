@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <main>
       <h2 className="dashboard-heading">Dashboard</h2>
+      <h3 className="dashboard-heading">Insights</h3>
       <section className="dashboard-section">
         <div className="card">
           <h4>Weekly Spending</h4>

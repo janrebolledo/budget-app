@@ -8,6 +8,10 @@
   backdrop-filter: blur(4px);
   background: #00000080;
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .settings-modal-open {
@@ -43,6 +47,6 @@
   color: var(--primary);
   margin-right: 8px;
   box-shadow: var(--dropshadow);
-  padding: calc(var(--padding) / 2);
+  padding: 14px;
   cursor: pointer;
 }

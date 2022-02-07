@@ -11,6 +11,13 @@ export default function Settings() {
     }
   }
 
+  // Checks if the esc key is clicked to open the settings modal
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "Escape") {
+      openSettings();
+    }
+  });
+
   // Asks the user if they really want to clear the log
   function clearLog() {
     if (window.confirm("Are you sure you want to clear the log?")) {
@@ -21,12 +28,19 @@ export default function Settings() {
     }
   }
 
-  // Checks if the esc key is clicked to open the settings modal
-  document.addEventListener("keyup", (e) => {
-    if (e.key === "Escape") {
-      openSettings();
+  function exportLog() {
+    let jsonData = JSON.stringify(localStorage.getItem("log"));
+
+    function download(content, fileName, contentType) {
+      var a = document.createElement("a");
+      var file = new Blob([content], { type: contentType });
+      a.href = URL.createObjectURL(file);
+      a.download = fileName;
+      a.click();
     }
-  });
+    download(jsonData, "log.json", "application/json");
+  }
+
   return (
     <div className="settings-modal" id="settings-modal">
       <div className="settings">
@@ -42,6 +56,10 @@ export default function Settings() {
         <div className="settings-content">
           <p>Clear log</p>
           <button onClick={clearLog}>Clear</button>
+        </div>
+        <div className="settings-content">
+          <p>Export log</p>
+          <button onClick={exportLog}>Export to JSON</button>
         </div>
       </div>
     </div>

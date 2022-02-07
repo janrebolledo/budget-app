@@ -90,7 +90,7 @@ export default function Log() {
 
     if (logContainer.innerHTML === "") {
       logContainer.innerHTML = `
-      <div class="log-item"><h3>No log items found. Add one below to get started.</h3></div>
+      <div class="log-item"><h3>Add an item below to get started.</h3></div>
       `;
     }
   }

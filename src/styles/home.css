@@ -33,3 +33,15 @@
   align-items: center;
   margin-bottom: 6px;
 }
+
+@media screen and (max-width: 980px) {
+  .dashboard-section {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    width: 100%;
+  }
+  .card:nth-child(3n) {
+    grid-column: auto;
+  }
+}
