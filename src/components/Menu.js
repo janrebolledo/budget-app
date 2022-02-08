@@ -25,6 +25,13 @@ export default function Menu() {
       settingsModal.classList.add("settings-modal-open");
     }
   }
+
+  // Checks if the m key is clicked to open the menu
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "m") {
+      openMenu();
+    }
+  });
   return (
     <>
       <nav id="menu" className="menu">
