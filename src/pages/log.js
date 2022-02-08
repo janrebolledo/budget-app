@@ -33,14 +33,7 @@ export default function Log() {
 
     // Get amounts in an array as integers
     let result = log.map(({ amount }) =>
-      Number(
-        amount
-          .replace("$", "")
-          .replace(",", "")
-          .replace(",", "")
-          .replace(",", "")
-          .replace(",", "")
-      )
+      Number(amount.replace("$", "").replace(/,/g, ""))
     );
 
     // Add amounts together

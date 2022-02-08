@@ -46,9 +46,10 @@
   background-color: var(--accent);
   opacity: 0.8;
   border-radius: 16px;
+  height: 0%;
 }
 
-.chart-bar:nth-child(1) .chart-percentage {
+/* .chart-bar:nth-child(1) .chart-percentage {
   height: 60%;
 }
 
@@ -94,7 +95,7 @@
 
 .chart-bar:nth-child(12) .chart-percentage {
   height: 35%;
-}
+} */
 
 .chart-unit {
   width: 100%;
