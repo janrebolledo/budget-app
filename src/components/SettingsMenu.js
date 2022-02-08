@@ -56,10 +56,35 @@ export default function Settings() {
         <div className="settings-content">
           <p>Clear log</p>
           <button onClick={clearLog}>Clear</button>
-        </div>
-        <div className="settings-content">
           <p>Export log</p>
           <button onClick={exportLog}>Export to JSON</button>
+
+          <h3 className="settings-heading">About</h3>
+          <p>
+            This project is built with vanilla javascript and hosted locally.
+            This app is entirely local, no data will ever be sent to a server.
+          </p>
+          <p>
+            Source code available{" "}
+            <a
+              className="link"
+              href="https://github.com/janrebolledo/budget-app"
+            >
+              here
+            </a>
+            .
+          </p>
+          <p>
+            Copyright © 2021{" "}
+            <a className="link" href="https://janrebolledo.com">
+              Jan Rebolledo
+            </a>
+            . Digital Experience by{" "}
+            <a className="link" href="https://janrebolledo.com">
+              Jan Rebolledo
+            </a>
+            .
+          </p>
         </div>
       </div>
     </div>
