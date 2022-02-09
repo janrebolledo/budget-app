@@ -117,14 +117,30 @@ export default function Log() {
     refreshTotal();
   }
 
-  // Honestly just copy pasted this from stackoverflow
-  function querySearch() {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-      get: (searchParams, prop) => searchParams.get(prop),
-    });
-    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-    let value = params.some_key; // "some_value"
-    console.log(value);
+  // // Honestly just copy pasted this from stackoverflow
+  // function querySearch() {
+  //   const params = new Proxy(new URLSearchParams(window.location.search), {
+  //     get: (searchParams, prop) => searchParams.get(prop),
+  //   });
+  //   // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+  //   let value = params.some_key; // "some_value"
+  //   console.log(value);
+  // }
+
+  function filtersMenu() {
+    console.log("open the filters menu!");
+
+    const button = document.getElementById("filters-dropdown-button");
+
+    const dropdown = document.querySelector(".filters-dropdown");
+
+    if (dropdown.classList.contains("dropdown-open")) {
+      dropdown.classList.remove("dropdown-open");
+      button.innerHTML = "expand_less";
+    } else {
+      dropdown.classList.add("dropdown-open");
+      button.innerHTML = "expand_more";
+    }
   }
 
   // Prints items + calculates total on load
@@ -143,6 +159,20 @@ export default function Log() {
           <h4>Date</h4>
           <h4>Name</h4>
           <h4>Amount</h4>
+          <h5 className="filters-button" onClick={filtersMenu}>
+            Filters{" "}
+            <span id="filters-dropdown-button" className="material-icons">
+              expand_more
+            </span>
+            <div className="filters-dropdown">
+              <p>
+                Date <span className="material-icons">add</span>
+              </p>
+              <p>
+                Price <span className="material-icons">add</span>
+              </p>
+            </div>
+          </h5>
         </div>
         <div className="log" id="log"></div>
         <div className="log-footer">

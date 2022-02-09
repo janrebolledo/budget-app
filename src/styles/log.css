@@ -11,13 +11,35 @@
   width: 25%;
 }
 
-.log-filter {
+.log-header h5 {
+  width: 25%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
-.log-filter * {
-  margin-right: 6px;
+.filters-dropdown {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  padding: var(--padding);
+  background: var(--gradient);
+  border-radius: 16px;
+  border: 1px solid #ffffff30;
+  top: 22%;
+  right: 10%;
+  z-index: 1;
+}
+
+.dropdown-open {
+  display: flex;
+}
+
+.filters-dropdown p {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .log-item {
@@ -94,4 +116,10 @@
   width: 25%;
   margin-right: 8px;
   box-shadow: var(--dropshadow);
+}
+
+@media screen and (max-width: 980px) {
+  .filters-dropdown {
+    right: 15%;
+  }
 }
