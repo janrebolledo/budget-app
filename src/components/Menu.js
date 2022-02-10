@@ -1,5 +1,6 @@
 import "../styles/Menu.css";
 import Settings from "./SettingsMenu";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   function openMenu() {
@@ -44,12 +45,12 @@ export default function Menu() {
             menu
           </span>
           <ul id="menu-list">
-            <a href="/">
+            <Link to="/home">
               <li>Dashboard</li>
-            </a>
-            <a href="/log">
+            </Link>
+            <Link to="/log">
               <li>Log</li>
-            </a>
+            </Link>
           </ul>
         </div>
         <span className="material-icons settings-button" onClick={openSettings}>
