@@ -24,6 +24,7 @@
   position: absolute;
   padding: var(--padding);
   background: var(--gradient);
+  box-shadow: var(--dropshadow);
   border-radius: 16px;
   border: 1px solid #ffffff30;
   top: 22%;
@@ -121,5 +122,6 @@
 @media screen and (max-width: 980px) {
   .filters-dropdown {
     right: 15%;
+    top: 15%;
   }
 }

@@ -128,8 +128,6 @@ export default function Log() {
   // }
 
   function filtersMenu() {
-    console.log("open the filters menu!");
-
     const button = document.getElementById("filters-dropdown-button");
 
     const dropdown = document.querySelector(".filters-dropdown");
@@ -164,15 +162,15 @@ export default function Log() {
             <span id="filters-dropdown-button" className="material-icons">
               expand_more
             </span>
-            <div className="filters-dropdown">
-              <p>
-                Date <span className="material-icons">add</span>
-              </p>
-              <p>
-                Price <span className="material-icons">add</span>
-              </p>
-            </div>
           </h5>
+          <div className="filters-dropdown">
+            <p>
+              Date <span className="material-icons">add</span>
+            </p>
+            <p>
+              Price <span className="material-icons">add</span>
+            </p>
+          </div>
         </div>
         <div className="log" id="log"></div>
         <div className="log-footer">
