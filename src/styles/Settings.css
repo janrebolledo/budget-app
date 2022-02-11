@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+.settings-content {
+  overflow-y: auto;
+}
+
 .settings-content button {
   background-color: var(--accent);
   border: none;

@@ -35,7 +35,8 @@ body {
   justify-content: center;
   flex-direction: row;
   overflow-y: none;
-  background: url("../../public/Background.jpg");
+  background: right url("../../public/Background.jpeg");
+  background-size: cover;
 }
 
 .App {

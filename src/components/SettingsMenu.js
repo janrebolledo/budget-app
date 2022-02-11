@@ -54,10 +54,21 @@ export default function Settings() {
           </span>
         </div>
         <div className="settings-content">
+          <h3 className="settings-heading">General</h3>
           <p>Clear log</p>
           <button onClick={clearLog}>Clear</button>
           <p>Export log</p>
           <button onClick={exportLog}>Export to JSON</button>
+
+          <h3 className="settings-heading">Keyboard Shortcuts</h3>
+
+          <p>
+            <strong>M</strong> to open the menu
+          </p>
+
+          <p>
+            <strong>ESC</strong> to open the settings
+          </p>
 
           <h3 className="settings-heading">About</h3>
           <p>
