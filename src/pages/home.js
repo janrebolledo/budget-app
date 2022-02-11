@@ -19,9 +19,9 @@ export default function Home() {
     weeklyInsight();
   });
 
-  let log = JSON.parse(localStorage.getItem("log") || "[]");
+  let log = JSON.parse(localStorage.getItem("log"));
 
-  if (log === "") {
+  if (log === null) {
     return (
       <main>
         <h2 className="dashboard-heading">Dashboard</h2>
@@ -83,7 +83,8 @@ export default function Home() {
         </section>
       </main>
     );
-  } else {
+  }
+  if (log !== null) {
     return (
       <main>
         <h2 className="dashboard-heading">Dashboard</h2>

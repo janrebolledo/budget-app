@@ -44,12 +44,12 @@ export default function Menu() {
           >
             menu
           </span>
-          <ul id="menu-list" onClick={openMenu}>
+          <ul id="menu-list">
             <Link to="/home">
-              <li>Dashboard</li>
+              <li onClick={openMenu}>Dashboard</li>
             </Link>
             <Link to="/log">
-              <li>Log</li>
+              <li onClick={openMenu}>Log</li>
             </Link>
           </ul>
         </div>

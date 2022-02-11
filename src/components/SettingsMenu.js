@@ -55,10 +55,11 @@ export default function Settings() {
         </div>
         <div className="settings-content">
           <h3 className="settings-heading">General</h3>
-          <p>Clear log</p>
-          <button onClick={clearLog}>Clear</button>
           <p>Export log</p>
           <button onClick={exportLog}>Export to JSON</button>
+
+          <p>Clear log</p>
+          <button onClick={clearLog}>Clear</button>
 
           <h3 className="settings-heading">Keyboard Shortcuts</h3>
 
@@ -72,8 +73,8 @@ export default function Settings() {
 
           <h3 className="settings-heading">About</h3>
           <p>
-            This project is built with vanilla javascript and hosted locally.
-            This app is entirely local, no data will ever be sent to a server.
+            This project is built with vanilla javascript and hosted locally on
+            your web browser. No data will ever be sent to a server.
           </p>
           <p>
             Source code available{" "}
