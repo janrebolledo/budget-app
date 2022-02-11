@@ -5,11 +5,42 @@ import { useEffect } from "react";
 
 export default function Home() {
   function weeklyInsight() {
-    let weeklyTotal = 0;
+    const log = JSON.parse(localStorage.getItem("log") || "[]");
+
     const weeklyTotalH3 = document.getElementById("weekly-total");
 
-    if (weeklyTotal > 0) {
-      weeklyTotalH3.innerHTML = "$" + weeklyTotal;
+    // Gets number of week in year
+    var currentdate = new Date();
+    var oneJan = new Date(currentdate.getFullYear(), 0, 1);
+    var numberOfDays = Math.floor(
+      (currentdate - oneJan) / (24 * 60 * 60 * 1000)
+    );
+    var weekNum = Math.ceil((currentdate.getDay() + 1 + numberOfDays) / 7);
+
+    // Filters the list by id
+    var weeklyLog = log.filter((item) => {
+      return item.date === weekNum;
+    });
+
+    // Get amounts in an array as integers
+    let result = weeklyLog.map(({ amount }) =>
+      Number(amount.replace("$", "").replace(/,/g, ""))
+    );
+
+    // Add amounts together
+    let total = 0;
+
+    for (let i = 0; i < result.length; i++) {
+      total += result[i];
+    }
+
+    const formattedTotal = total.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
+    if (total > 0) {
+      weeklyTotalH3.innerHTML = formattedTotal;
     } else {
       weeklyTotalH3.innerHTML = "—";
     }
@@ -21,6 +52,7 @@ export default function Home() {
 
   let log = JSON.parse(localStorage.getItem("log"));
 
+  // If no log items found, load a grayed out dashboard and an onboarding message
   if (log === null) {
     return (
       <main>
@@ -84,6 +116,8 @@ export default function Home() {
       </main>
     );
   }
+
+  // If log items are found, load regular dashboard
   if (log !== null) {
     return (
       <main>
