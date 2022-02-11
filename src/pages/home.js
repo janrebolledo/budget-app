@@ -15,7 +15,9 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {});
+  useEffect(() => {
+    weeklyInsight();
+  });
 
   let log = JSON.parse(localStorage.getItem("log") || "[]");
 

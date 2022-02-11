@@ -44,7 +44,7 @@ export default function Menu() {
           >
             menu
           </span>
-          <ul id="menu-list">
+          <ul id="menu-list" onClick={openMenu}>
             <Link to="/home">
               <li>Dashboard</li>
             </Link>
