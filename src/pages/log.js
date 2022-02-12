@@ -21,9 +21,9 @@ export default function Log() {
       document.getElementById("date").value
     ).monthValue();
     var year = LocalDate.parse(document.getElementById("date").value).year();
-    var dayOfYear = LocalDate.parse(
+    var hashCode = LocalDate.parse(
       document.getElementById("date").value
-    ).dayOfYear();
+    ).hashCode();
     var date = month + "/" + day + "/" + year;
     // Get log in localStorage
     let log = JSON.parse(localStorage.getItem("log") || "[]");
@@ -44,7 +44,7 @@ export default function Log() {
         week,
         month,
         year,
-        dayOfYear,
+        hashCode,
       });
       // Add newEntry to current log
       let updatedLog = log.concat(newEntry);
@@ -88,11 +88,15 @@ export default function Log() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     const logContainer = document.getElementById("log");
 
+    let sortedLog = log.sort((a, b) => {
+      return a.hashCode - b.hashCode;
+    });
+
     // Clears container
     logContainer.innerHTML = "";
 
     // Prints an item for every object
-    logContainer.innerHTML = log
+    logContainer.innerHTML = sortedLog
       .map(
         (item) =>
           `<div class="log-item" key=${item.id} id=${item.id}>
