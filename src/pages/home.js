@@ -53,7 +53,7 @@ export default function Home() {
     // Add amounts together
     let prevTotal = 0;
 
-    for (let i = 0; i < result.length; i++) {
+    for (let i = 0; i < prevResult.length; i++) {
       prevTotal += prevResult[i];
     }
 
