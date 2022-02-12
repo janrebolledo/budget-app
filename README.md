@@ -8,4 +8,4 @@ Logs stored in localStorage.
 
 1. Search query in URL
 2. Filtering items by date, price, & more
-3. Working dashboard
+3. Sorting Options
