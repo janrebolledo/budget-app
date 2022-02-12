@@ -2,6 +2,7 @@
 import "../styles/home.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { LocalDate } from "@js-joda/core";
 
 export default function Home() {
   function weeklyInsight() {
@@ -10,16 +11,11 @@ export default function Home() {
     const weeklyTotalH3 = document.getElementById("weekly-total");
 
     // Gets number of week in year
-    var currentdate = new Date();
-    var oneJan = new Date(currentdate.getFullYear(), 0, 1);
-    var numberOfDays = Math.floor(
-      (currentdate - oneJan) / (24 * 60 * 60 * 1000)
-    );
-    var weekNum = Math.ceil((currentdate.getDay() + 1 + numberOfDays) / 7);
+    var weekNum = LocalDate.now().isoWeekOfWeekyear();
 
-    // Filters the list by id
+    // Filters the list by if week number is the same
     var weeklyLog = log.filter((item) => {
-      return item.date === weekNum;
+      return item.week === weekNum;
     });
 
     // Get amounts in an array as integers

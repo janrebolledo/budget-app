@@ -1,12 +1,17 @@
 import "../styles/log.css";
 import CurrencyInput from "react-currency-input-field";
 import { useEffect } from "react";
+import { LocalDate } from "@js-joda/core";
 
 export default function Log() {
   function newEntry() {
     var date = document.getElementById("date").value.replace(/-/g, "/");
     var name = document.getElementById("name").value;
     var amount = document.getElementById("amount").value;
+    // Gets week number for insights
+    var week = LocalDate.parse(
+      document.getElementById("date").value
+    ).isoWeekOfWeekyear();
     // Get log in localStorage
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     // Set newEntry as a blank array
@@ -17,7 +22,7 @@ export default function Log() {
       // Set id as random number
       let id = Math.floor(Math.random() * 100000);
       // Create new entry
-      newEntry.push({ id, date, name, amount });
+      newEntry.push({ id, date, name, amount, week });
       // Add newEntry to current log
       let updatedLog = log.concat(newEntry);
       // Set updatedLog as localStorage
