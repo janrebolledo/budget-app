@@ -35,10 +35,55 @@ export default function Home() {
       currency: "USD",
     });
 
+    const prevWeekTotal = document.getElementById("prev-week-total");
+
+    // Gets number of previous week in year
+    var prevWeekNum = LocalDate.now().isoWeekOfWeekyear() - 1;
+
+    // Filters the list by if week number is the same
+    var prevWeeklyLog = log.filter((item) => {
+      return item.week === prevWeekNum;
+    });
+
+    // Get amounts in an array as integers
+    let prevResult = prevWeeklyLog.map(({ amount }) =>
+      Number(amount.replace("$", "").replace(/,/g, ""))
+    );
+
+    // Add amounts together
+    let prevTotal = 0;
+
+    for (let i = 0; i < result.length; i++) {
+      prevTotal += prevResult[i];
+    }
+
+    const prevFormattedTotal = prevTotal.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
+    const percentage = Number(((total / prevTotal) * 100).toFixed(2));
+
+    const weeklyPercentageSpan = document.getElementById(
+      "weekly-insight-percentage"
+    );
+    const weeklyPercentageIndicatorSpan = document.getElementById(
+      "weekly-percentage-indicator"
+    );
+
     if (total > 0) {
       weeklyTotalH3.innerHTML = formattedTotal;
+      prevWeekTotal.innerHTML = prevFormattedTotal;
+      weeklyPercentageSpan.innerHTML = percentage;
+      if (percentage > 100) {
+        weeklyPercentageIndicatorSpan.innerHTML = "arrow_drop_up";
+      } else {
+        weeklyPercentageIndicatorSpan.innerHTML = "arrow_drop_down";
+      }
     } else {
       weeklyTotalH3.innerHTML = "—";
+      prevWeekTotal.innerHTML = "—";
+      weeklyPercentageSpan.innerHTML = "0";
     }
   }
 
@@ -127,8 +172,14 @@ export default function Home() {
                 —
               </h3>
               <small>
-                <span className="material-icons">arrow_drop_up</span>
-                0% (Previously: — )
+                <span
+                  className="material-icons"
+                  id="weekly-percentage-indicator"
+                >
+                  arrow_drop_up
+                </span>
+                <span id="weekly-insight-percentage">0</span>% (Previously:{" "}
+                <span id="prev-week-total">—</span> )
               </small>
             </div>
             {/* <Chart type="week" /> */}
@@ -142,7 +193,7 @@ export default function Home() {
               <h3 className="card-total">—</h3>
               <small>
                 <span className="material-icons">arrow_drop_up</span>
-                0% (Previously: — )
+                0% (Previously: <span id="prev-month-total">—</span> )
               </small>
             </div>
             {/* <Chart type="month" /> */}
@@ -156,7 +207,7 @@ export default function Home() {
               <h3 className="card-total">—</h3>
               <small>
                 <span className="material-icons">arrow_drop_up</span>
-                0% (Previously: — )
+                0% (Previously: <span id="prev-year-total">—</span> )
               </small>
             </div>
             {/* <Chart type="year" /> */}
