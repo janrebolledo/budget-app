@@ -12,10 +12,16 @@ export default function Home() {
 
     // Gets number of week in year
     var weekNum = LocalDate.now().isoWeekOfWeekyear();
+    var yearNum = LocalDate.now().year();
 
     // Filters the list by if week number is the same
     var weeklyLog = log.filter((item) => {
       return item.week === weekNum;
+    });
+
+    // Makes sure that the year is the same
+    weeklyLog = weeklyLog.filter((item) => {
+      return item.year === yearNum;
     });
 
     // Get amounts in an array as integers
@@ -43,6 +49,11 @@ export default function Home() {
     // Filters the list by if week number is the same
     var prevWeeklyLog = log.filter((item) => {
       return item.week === prevWeekNum;
+    });
+
+    // Makes sure that the year is the same
+    prevWeeklyLog = prevWeeklyLog.filter((item) => {
+      return item.year === yearNum;
     });
 
     // Get amounts in an array as integers
