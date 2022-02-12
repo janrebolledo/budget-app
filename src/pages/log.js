@@ -5,13 +5,26 @@ import { LocalDate } from "@js-joda/core";
 
 export default function Log() {
   function newEntry() {
-    var date = document.getElementById("date").value.replace(/-/g, "/");
-    var name = document.getElementById("name").value;
+    var name = document
+      .getElementById("name")
+      .value.replace("<", "")
+      .replace(">", "");
     var amount = document.getElementById("amount").value;
-    // Gets week number for insights
+    // Gets date values for insights
+    var day = LocalDate.parse(
+      document.getElementById("date").value
+    ).dayOfMonth();
     var week = LocalDate.parse(
       document.getElementById("date").value
     ).isoWeekOfWeekyear();
+    var month = LocalDate.parse(
+      document.getElementById("date").value
+    ).monthValue();
+    var year = LocalDate.parse(document.getElementById("date").value).year();
+    var dayOfYear = LocalDate.parse(
+      document.getElementById("date").value
+    ).dayOfYear();
+    var date = month + "/" + day + "/" + year;
     // Get log in localStorage
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     // Set newEntry as a blank array
@@ -22,7 +35,17 @@ export default function Log() {
       // Set id as random number
       let id = Math.floor(Math.random() * 100000);
       // Create new entry
-      newEntry.push({ id, date, name, amount, week });
+      newEntry.push({
+        id,
+        date,
+        name,
+        amount,
+        day,
+        week,
+        month,
+        year,
+        dayOfYear,
+      });
       // Add newEntry to current log
       let updatedLog = log.concat(newEntry);
       // Set updatedLog as localStorage
