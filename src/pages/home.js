@@ -44,16 +44,26 @@ export default function Home() {
     const prevWeekTotal = document.getElementById("prev-week-total");
 
     // Gets number of previous week in year
-    var prevWeekNum = LocalDate.now().isoWeekOfWeekyear() - 1;
+
+    if (weekNum === 1) {
+      var prevWeekNum = 52;
+      var prevYearNum = yearNum - 1;
+    } else {
+      // eslint-disable-next-line
+      var prevWeekNum = LocalDate.now().isoWeekOfWeekyear() - 1;
+      // eslint-disable-next-line
+      var prevYearNum = LocalDate.now().year();
+    }
 
     // Filters the list by if week number is the same
+
     var prevWeeklyLog = log.filter((item) => {
       return item.week === prevWeekNum;
     });
 
     // Makes sure that the year is the same
     prevWeeklyLog = prevWeeklyLog.filter((item) => {
-      return item.year === yearNum;
+      return item.year === prevYearNum;
     });
 
     // Get amounts in an array as integers
