@@ -80,10 +80,6 @@ export default function Home() {
       } else {
         weeklyPercentageIndicatorSpan.innerHTML = "arrow_drop_down";
       }
-    } else {
-      weeklyTotalH3.innerHTML = "—";
-      prevWeekTotal.innerHTML = "—";
-      weeklyPercentageSpan.innerHTML = "0";
     }
   }
 
