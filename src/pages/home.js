@@ -206,24 +206,18 @@ export default function Home() {
   function yearlyInsight() {
     const log = JSON.parse(localStorage.getItem("log") || "[]");
 
-    const weeklyTotalH3 = document.getElementById("yearly-total");
+    const yearlyTotalH3 = document.getElementById("yearly-total");
 
     // Gets number of week in year
-    var weekNum = LocalDate.now().isoWeekOfWeekyear();
     var yearNum = LocalDate.now().year();
 
-    // Filters the list by if week number is the same
-    var weeklyLog = log.filter((item) => {
-      return item.week === weekNum;
-    });
-
     // Makes sure that the year is the same
-    weeklyLog = weeklyLog.filter((item) => {
+    var yearlyLog = log.filter((item) => {
       return item.year === yearNum;
     });
 
     // Get amounts in an array as integers
-    let result = weeklyLog.map(({ amount }) =>
+    let result = yearlyLog.map(({ amount }) =>
       Number(amount.replace("$", "").replace(/,/g, ""))
     );
 
@@ -239,33 +233,18 @@ export default function Home() {
       currency: "USD",
     });
 
-    const prevWeekTotal = document.getElementById("prev-year-total");
+    const prevYearTotal = document.getElementById("prev-year-total");
 
     // Gets number of previous week in year
-
-    if (weekNum === 1) {
-      var prevWeekNum = 52;
-      var prevYearNum = yearNum - 1;
-    } else {
-      // eslint-disable-next-line
-      var prevWeekNum = LocalDate.now().isoWeekOfWeekyear() - 1;
-      // eslint-disable-next-line
-      var prevYearNum = LocalDate.now().year();
-    }
-
-    // Filters the list by if week number is the same
-
-    var prevWeeklyLog = log.filter((item) => {
-      return item.week === prevWeekNum;
-    });
+    var prevYearNum = yearNum - 1;
 
     // Makes sure that the year is the same
-    prevWeeklyLog = prevWeeklyLog.filter((item) => {
+    var prevYearlyLog = log.filter((item) => {
       return item.year === prevYearNum;
     });
 
     // Get amounts in an array as integers
-    let prevResult = prevWeeklyLog.map(({ amount }) =>
+    let prevResult = prevYearlyLog.map(({ amount }) =>
       Number(amount.replace("$", "").replace(/,/g, ""))
     );
 
@@ -283,21 +262,21 @@ export default function Home() {
 
     const percentage = Number(((total / prevTotal) * 100).toFixed(2));
 
-    const weeklyPercentageSpan = document.getElementById(
+    const yearlyPercentageSpan = document.getElementById(
       "yearly-insight-percentage"
     );
-    const weeklyPercentageIndicatorSpan = document.getElementById(
+    const yearlyPercentageIndicatorSpan = document.getElementById(
       "yearly-percentage-indicator"
     );
 
     if (total > 0) {
-      weeklyTotalH3.innerHTML = formattedTotal;
-      prevWeekTotal.innerHTML = prevFormattedTotal;
-      weeklyPercentageSpan.innerHTML = percentage;
+      yearlyTotalH3.innerHTML = formattedTotal;
+      prevYearTotal.innerHTML = prevFormattedTotal;
+      yearlyPercentageSpan.innerHTML = percentage;
       if (percentage > 100) {
-        weeklyPercentageIndicatorSpan.innerHTML = "arrow_drop_up";
+        yearlyPercentageIndicatorSpan.innerHTML = "arrow_drop_up";
       } else {
-        weeklyPercentageIndicatorSpan.innerHTML = "arrow_drop_down";
+        yearlyPercentageIndicatorSpan.innerHTML = "arrow_drop_down";
       }
     }
   }
