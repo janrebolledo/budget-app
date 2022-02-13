@@ -2,6 +2,7 @@ import "../styles/log.css";
 import CurrencyInput from "react-currency-input-field";
 import { useEffect } from "react";
 import { LocalDate } from "@js-joda/core";
+import Filters from "../components/Filters";
 
 export default function Log() {
   function newEntry() {
@@ -222,26 +223,7 @@ export default function Log() {
           Add
         </button>
       </div>
-
-      <div className="filters-modal" id="filters-modal">
-        <div className="filters">
-          <div className="filters-header">
-            <h2>Filters</h2>
-            <span
-              className="material-icons filters-close-button"
-              onClick={openFilters}
-            >
-              close
-            </span>
-          </div>
-          <div className="filters-content">
-            <h3 className="filters-heading">Sorting</h3>
-            <p>Sorting coming soon.</p>
-            <h3 className="filters-heading">Filters</h3>
-            <p>Filters coming soon.</p>
-          </div>
-        </div>
-      </div>
+      <Filters />
     </main>
   );
 }
