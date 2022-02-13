@@ -53,6 +53,10 @@ export default function Log() {
       logItems();
       refreshTotal();
     }
+
+    document.getElementById("date").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("amount").value = "";
   }
 
   function refreshTotal() {
@@ -159,17 +163,12 @@ export default function Log() {
   //   console.log(value);
   // }
 
-  function filtersMenu() {
-    const button = document.getElementById("filters-dropdown-button");
-
-    const dropdown = document.querySelector(".filters-dropdown");
-
-    if (dropdown.classList.contains("dropdown-open")) {
-      dropdown.classList.remove("dropdown-open");
-      button.innerHTML = "expand_less";
+  function openFilters() {
+    const filtersModal = document.querySelector("#filters-modal");
+    if (filtersModal.classList.contains("filters-modal-open")) {
+      filtersModal.classList.remove("filters-modal-open");
     } else {
-      dropdown.classList.add("dropdown-open");
-      button.innerHTML = "expand_more";
+      filtersModal.classList.add("filters-modal-open");
     }
   }
 
@@ -189,20 +188,16 @@ export default function Log() {
           <h4>Date</h4>
           <h4>Name</h4>
           <h4>Amount</h4>
-          <h5 className="filters-button" onClick={filtersMenu}>
+          <h5 className="filters-button" onClick={openFilters}>
             Filters{" "}
-            <span id="filters-dropdown-button" className="material-icons">
-              expand_more
+            <span
+              id="filters-dropdown-button"
+              className="material-icons"
+              onClick={openFilters}
+            >
+              search
             </span>
           </h5>
-          <div className="filters-dropdown">
-            <p>
-              Date <span className="material-icons">add</span>
-            </p>
-            <p>
-              Price <span className="material-icons">add</span>
-            </p>
-          </div>
         </div>
         <div className="log" id="log"></div>
         <div className="log-footer">
@@ -212,7 +207,7 @@ export default function Log() {
           </p>
         </div>
       </div>
-      <form className="new-entry-form">
+      <div className="new-entry-form">
         <input id="date" type="date" required placeholder="1/1/2022" />
         <input id="name" type="text" required placeholder="Expense" />
         <CurrencyInput
@@ -226,7 +221,27 @@ export default function Log() {
         <button type="submit" onClick={newEntry}>
           Add
         </button>
-      </form>
+      </div>
+
+      <div className="filters-modal" id="filters-modal">
+        <div className="filters">
+          <div className="filters-header">
+            <h2>Filters</h2>
+            <span
+              className="material-icons filters-close-button"
+              onClick={openFilters}
+            >
+              close
+            </span>
+          </div>
+          <div className="filters-content">
+            <h3 className="filters-heading">Sorting</h3>
+            <p>Sorting coming soon.</p>
+            <h3 className="filters-heading">Filters</h3>
+            <p>Filters coming soon.</p>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

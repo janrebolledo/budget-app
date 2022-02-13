@@ -5,6 +5,8 @@ body {
   font-family: var(--fonts);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: right url("../../public/Background.png");
+  background-size: cover;
 }
 
 * {
@@ -35,8 +37,6 @@ body {
   justify-content: center;
   flex-direction: row;
   overflow-y: none;
-  background: right url("../../public/Background.jpeg");
-  background-size: cover;
 }
 
 .App {
