@@ -11,6 +11,9 @@ export default function Log() {
       .value.replace("<", "")
       .replace(">", "");
     var amount = document.getElementById("amount").value;
+    var amountInt = Number(
+      document.getElementById("amount").value.replace("$", "").replace(/,/g, "")
+    );
     // Gets date values for insights
     var day = LocalDate.parse(
       document.getElementById("date").value
@@ -41,6 +44,7 @@ export default function Log() {
         date,
         name,
         amount,
+        amountInt,
         day,
         week,
         month,
@@ -65,9 +69,7 @@ export default function Log() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
 
     // Get amounts in an array as integers
-    let result = log.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let result = log.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let total = 0;
@@ -93,15 +95,11 @@ export default function Log() {
     let log = JSON.parse(localStorage.getItem("log") || "[]");
     const logContainer = document.getElementById("log");
 
-    let sortedLog = log.sort((a, b) => {
-      return a.hashCode - b.hashCode;
-    });
-
     // Clears container
     logContainer.innerHTML = "";
 
     // Prints an item for every object
-    logContainer.innerHTML = sortedLog
+    logContainer.innerHTML = log
       .map(
         (item) =>
           `<div class="log-item" key=${item.id} id=${item.id}>

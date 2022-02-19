@@ -25,9 +25,7 @@ export default function Home() {
     });
 
     // Get amounts in an array as integers
-    let result = weeklyLog.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let result = weeklyLog.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let total = 0;
@@ -67,9 +65,7 @@ export default function Home() {
     });
 
     // Get amounts in an array as integers
-    let prevResult = prevWeeklyLog.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let prevResult = prevWeeklyLog.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let prevTotal = 0;
@@ -124,9 +120,7 @@ export default function Home() {
     });
 
     // Get amounts in an array as integers
-    let result = monthlyLog.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let result = monthlyLog.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let total = 0;
@@ -166,9 +160,7 @@ export default function Home() {
     });
 
     // Get amounts in an array as integers
-    let prevResult = prevMonthlyLog.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let prevResult = prevMonthlyLog.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let prevTotal = 0;
@@ -217,9 +209,7 @@ export default function Home() {
     });
 
     // Get amounts in an array as integers
-    let result = yearlyLog.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let result = yearlyLog.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let total = 0;
@@ -244,9 +234,7 @@ export default function Home() {
     });
 
     // Get amounts in an array as integers
-    let prevResult = prevYearlyLog.map(({ amount }) =>
-      Number(amount.replace("$", "").replace(/,/g, ""))
-    );
+    let prevResult = prevYearlyLog.map(({ amountInt }) => amountInt);
 
     // Add amounts together
     let prevTotal = 0;
