@@ -22,6 +22,7 @@ export default function Filters() {
     // If no filter is found in localStorage, set it as dateDecending
     if (userFilter === null) {
       localStorage.setItem("filter", "dateDescending");
+      dateDescendingButton.checked = true;
     }
     if (userFilter === "dateDescending") {
       filterDateDescending();
