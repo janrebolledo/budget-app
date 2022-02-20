@@ -38,6 +38,12 @@
 
 .settings-close-button {
   cursor: pointer;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.settings-close-button:hover {
+  color: var(--accent);
 }
 
 .settings-content {

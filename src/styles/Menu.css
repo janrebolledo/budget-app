@@ -51,10 +51,22 @@
 
 .menu-button {
   cursor: pointer;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+  color: var(--accent);
 }
 
 .settings-button {
   cursor: pointer;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.settings-button:hover {
+  color: var(--accent);
 }
 
 @media screen and (max-width: 980px) {
