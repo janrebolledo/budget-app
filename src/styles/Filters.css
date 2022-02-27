@@ -59,12 +59,27 @@
   margin: 16px 0;
 }
 
-.sorting-form {
+.sorting-form,
+.filters-form {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.sorting-form > label {
+.sorting-form > label,
+.filters-form > label {
   margin-bottom: 6px;
 }
+
+/* .filters-form > label > input {
+  width: 25%;
+  margin-right: 8px;
+  box-shadow: var(--dropshadow);
+  padding: 6px;
+  border-radius: 6px;
+  border: 0.5px solid #ffffff30;
+  backdrop-filter: blur(8px);
+  background: var(--gradient);
+  color: var(--primary);
+  font-family: var(--fonts);
+} */

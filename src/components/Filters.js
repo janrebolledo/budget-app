@@ -105,8 +105,49 @@ export default function Filters() {
     filterPriceAscending();
   }
 
+  function dateWeekly() {
+    sessionStorage.setItem("filter", "weekly");
+    window.location.reload();
+  }
+
+  function dateMonthly() {
+    sessionStorage.setItem("filter", "monthly");
+    window.location.reload();
+  }
+
+  function dateAnnual() {
+    sessionStorage.setItem("filter", "annual");
+    window.location.reload();
+  }
+
+  function clearFilters() {
+    sessionStorage.clear("filter");
+    window.location.reload();
+  }
+
+  function sorting() {
+    if (sessionStorage.getItem("filter") === "weekly") {
+      const weeklyButton = document.getElementById("dateWeekly");
+
+      weeklyButton.checked = true;
+    }
+
+    if (sessionStorage.getItem("filter") === "monthly") {
+      const monthlyButton = document.getElementById("dateMonthly");
+
+      monthlyButton.checked = true;
+    }
+
+    if (sessionStorage.getItem("filter") === "annual") {
+      const annualButton = document.getElementById("dateAnnual");
+
+      annualButton.checked = true;
+    }
+  }
+
   useEffect(() => {
     filters();
+    sorting();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -163,7 +204,38 @@ export default function Filters() {
             </label>
           </form>
           <h3 className="filters-heading">Filters</h3>
-          <p>Filters coming soon.</p>
+          <form className="filters-form" id="filters-form">
+            <label htmlFor="dateWeekly" onClick={dateWeekly}>
+              <input
+                type="radio"
+                value="dateWeekly"
+                id="dateWeekly"
+                name="filtering"
+              />
+              Weekly
+            </label>
+            <label htmlFor="dateMonthly" onClick={dateMonthly}>
+              <input
+                type="radio"
+                value="dateMonthly"
+                id="dateMonthly"
+                name="filtering"
+              />
+              Monthly
+            </label>
+            <label htmlFor="dateAnnual" onClick={dateAnnual}>
+              <input
+                type="radio"
+                value="dateAnnual"
+                id="dateAnnual"
+                name="filtering"
+              />
+              Annually
+            </label>
+            <button htmlFor="dateAnnual" onClick={clearFilters}>
+              Clear Filters
+            </button>
+          </form>
         </div>
       </div>
     </div>

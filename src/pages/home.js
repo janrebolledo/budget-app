@@ -269,6 +269,18 @@ export default function Home() {
     }
   }
 
+  function weeklyLogLink() {
+    sessionStorage.setItem("filter", "weekly");
+  }
+
+  function monthlyLogLink() {
+    sessionStorage.setItem("filter", "monthly");
+  }
+
+  function annualLogLink() {
+    sessionStorage.setItem("filter", "annual");
+  }
+
   useEffect(() => {
     weeklyInsight();
     monthlyInsight();
@@ -305,8 +317,8 @@ export default function Home() {
               </small>
             </div>
             {/* <Chart type="week" /> */}
-            <Link to="/log" className="link">
-              View log →
+            <Link to="/log" className="link" onClick={weeklyLogLink}>
+              View weekly log →
             </Link>
           </div>
           <div className="card">
@@ -319,8 +331,8 @@ export default function Home() {
               </small>
             </div>
             {/* <Chart type="month" /> */}
-            <Link to="/log" className="link">
-              View log →
+            <Link to="/log" className="link" onClick={monthlyLogLink}>
+              View monthly log →
             </Link>
           </div>
           <div className="card">
@@ -333,8 +345,8 @@ export default function Home() {
               </small>
             </div>
             {/* <Chart type="year" /> */}
-            <Link to="/log" className="link">
-              View log →
+            <Link to="/log" className="link" onClick={annualLogLink}>
+              View annual log →
             </Link>
           </div>
         </section>
@@ -367,8 +379,8 @@ export default function Home() {
               </small>
             </div>
             {/* <Chart type="week" /> */}
-            <Link to="/log" className="link">
-              View log →
+            <Link to="/log" className="link" onClick={weeklyLogLink}>
+              View weekly log →
             </Link>
           </div>
           <div className="card">
@@ -389,8 +401,8 @@ export default function Home() {
               </small>
             </div>
             {/* <Chart type="month" /> */}
-            <Link to="/log" className="link">
-              View log →
+            <Link to="/log" className="link" onClick={monthlyLogLink}>
+              View monthly log →
             </Link>
           </div>
           <div className="card">
@@ -411,8 +423,8 @@ export default function Home() {
               </small>
             </div>
             {/* <Chart type="year" /> */}
-            <Link to="/log" className="link">
-              View log →
+            <Link to="/log" className="link" onClick={annualLogLink}>
+              View annual log →
             </Link>
           </div>
         </section>

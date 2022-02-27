@@ -92,7 +92,55 @@ export default function Log() {
   }
 
   function logItems() {
-    let log = JSON.parse(localStorage.getItem("log") || "[]");
+    if (sessionStorage.getItem("filter") === null) {
+      var log = JSON.parse(localStorage.getItem("log") || "[]");
+    }
+
+    if (sessionStorage.getItem("filter") === "weekly") {
+      // eslint-disable-next-line
+      var log = JSON.parse(localStorage.getItem("log") || "[]");
+
+      var weekNum = LocalDate.now().isoWeekOfWeekyear();
+      var yearNum = LocalDate.now().year();
+
+      log = log.filter((item) => {
+        return item.week === weekNum;
+      });
+
+      log = log.filter((item) => {
+        return item.year === yearNum;
+      });
+    }
+
+    if (sessionStorage.getItem("filter") === "monthly") {
+      // eslint-disable-next-line
+      var log = JSON.parse(localStorage.getItem("log") || "[]");
+
+      var monthNum = LocalDate.now().monthValue();
+      // eslint-disable-next-line
+      var yearNum = LocalDate.now().year();
+
+      log = log.filter((item) => {
+        return item.month === monthNum;
+      });
+
+      log = log.filter((item) => {
+        return item.year === yearNum;
+      });
+    }
+
+    if (sessionStorage.getItem("filter") === "annual") {
+      // eslint-disable-next-line
+      var log = JSON.parse(localStorage.getItem("log") || "[]");
+
+      // eslint-disable-next-line
+      var yearNum = LocalDate.now().year();
+
+      log = log.filter((item) => {
+        return item.year === yearNum;
+      });
+    }
+
     const logContainer = document.getElementById("log");
 
     // Clears container
@@ -152,16 +200,6 @@ export default function Log() {
     refreshTotal();
   }
 
-  // // Honestly just copy pasted this from stackoverflow
-  // function querySearch() {
-  //   const params = new Proxy(new URLSearchParams(window.location.search), {
-  //     get: (searchParams, prop) => searchParams.get(prop),
-  //   });
-  //   // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-  //   let value = params.some_key; // "some_value"
-  //   console.log(value);
-  // }
-
   function openFilters() {
     const filtersModal = document.querySelector("#filters-modal");
     if (filtersModal.classList.contains("filters-modal-open")) {
@@ -175,8 +213,6 @@ export default function Log() {
   useEffect(() => {
     logItems();
     refreshTotal();
-    // querySearch();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
