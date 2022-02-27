@@ -8,18 +8,18 @@ Logs stored in localStorage.
 
 ##### App Screenshots
 
-![Dashboard](./public/AppScreenshots/Dashboard.png)
-
 ###### Dashboard
 
-![Log](./public/AppScreenshots/Log.png)
+![Dashboard](./public/AppScreenshots/Dashboard.png)
 
 ###### Log
 
-![Filters](./public/AppScreenshots/FiltersMenu.png)
+![Log](./public/AppScreenshots/Log.png)
 
 ###### Filters
 
-![Settings Menu](./public/AppScreenshots/SettingsMenu.png)
+![Filters](./public/AppScreenshots/FiltersMenu.png)
 
 ###### Settings Menu
+
+![Settings Menu](./public/AppScreenshots/SettingsMenu.png)
